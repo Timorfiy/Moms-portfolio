@@ -6,47 +6,74 @@
     <link rel="stylesheet" href="styles.css">
     <title>Главная</title>
 </head>
+
 <body>
-    <header>
-        <h1>Кислова Вероника Анатольевна</h1>
-        <nav>
-            <ul>
-                <li><a href="#about-me">обо мне</a></li>
-                <li><a href="#work-exp">Рабочий опыт</a></li>
-                <li><a href="#contacts">Контакты</a></li>
-            </ul>
-        </nav>
+    <header class="header">
+        <div class="branding">
+            <p>Кислова Вероника</p>
+        </div>
+        <div class="nav-header">
+            <nav class="nav">
+                <a href="#about-me">Обо мне</a>
+                <a href="#work-exp">Рабочий опыт</a>
+                <a href="#skills">Мои характеристи</a>
+            </nav>
+        </div>
     </header>
+
     <main>
-        <section id="about-me">
-            <h2>Обо мне</h2>
-            <img src="images/Milka.jpg" width="200" alt="Фотография котика">
-            <p>Здравствуйте, Вы на сайте-портфолио о Кисловой Веронике Анатольевне. После ознакомления с моим портфолио, у вас сложится полное представление о том, какого человека вы на самом деле хотите взять к себе на работу.</p>
+        <section class="about-me">
+            <h2 id="about-me">Обо мне</h2>
+            <h1>1С-Аналитик</h1>
+            <img src="images/Milka.jpg" width="500" alt="Фотография котика">
+            <p>Привествую всех, меня зовут Вероника! На этом сайте-портфолио вы сможете узнать кто я, какой у меня опыт
+                работы, мои личные и рабочии характеристи. Этот сайт делал мой сын в качестве обучения, поэтому не
+                воспринимайте визуал слишком серьезно.</p>
         </section>
-        <section id="work-exp">
-            <h2>Магазин дров</h2>
-            <p>Я - мать двоих детей, а именно сына и дочки. Пока что они туда сюда что то делают, но в общем и целом дети хорошие.</p>
 
-            <h2>Главбух всезде, где была</h2>
-            <p>На всех работах, где я появлялась, я становилась главбухом.</p>
+        <section class="work-exp">
+            <h2 id="work-exp">Опыт работы</h2>
+            <h3>ООО картошка</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere voluptate minus non. Dicta qui facilis
+                optio impedit minus. Corporis porro sed illum dicta id quam doloribus, recusandae consequatur sequi?
+                Doloremque, neque.</p>
 
-            <h2>2 высших образования</h2>
-            <p>У меня есть 2 корочки об окончании культурного и экономического высшего училища (наверное, так пишется).</p>
+            <h3>ООО кепчук</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi eos in ratione quidem tempora aliquid
+                soluta quam obcaecati assumenda itaque fuga voluptates est, aspernatur eligendi expedita. Amet ad
+                assumenda modi?</p>
+
+            <h3>ААА бизнес</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis laudantium sit incidunt tenetur non
+                neque sunt eos labore facere vel? Nam officia sequi illum iure quaerat voluptas nisi sapiente
+                voluptatibus ipsa, illo est vero, id cum magni perferendis fugit numquam.</p>
         </section>
-        <section>
-            <h2>Свяжитесь со мной</h2>
-            <form action="submit_form.php" method="post">
-                <label for="name">Имя:</label>
-                <input type="text" id="name" name="name" required>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="message">Сообщение:</label>
-                <textarea id="message" name="message" required></textarea>
-                
-                <button type="submit">Отправить</button>
-            </form>
+
+        <section class="skills">
+            <h2 id="skills">Личные и проффессиональные качества</h2>
+            <div class="div-skills">
+                <div class="column-skills">
+                    <h3>Hard skills</h3>
+                    <ul>
+                        <li>Логическое мышление и способность работать с большим объемом информации</li>
+                        <li>Организационные навыки и умение планировать и управлять временем и ресурсами</li>
+                        <li>Глубокое знание методов сбора, обработки и анализа данных</li>
+                        <li>Опыт работы с программными продуктами, базами данных и аналитическими платформами.</li>
+                        <li>Ориентация на результат и умение выстраивать работу в соответствии с целями организации</li>
+                        <li>Способность к критическому мышлению и оценке достоверности полученных данных</li>
+                    </ul>
+                </div>
+                <div class="column-skills">
+                    <h3>Soft skills</h3>
+                    <ul>
+                        <li>Логическое мышление и способ</li>
+                        <li>Организационные навыки и умение</li>
+                        <li>Глубокое знание методов сбор</li>
+                        <li>Опыт работы с программными </li>
+                        <li>Ориентация на результат и умение выстраивать и</li>
+                    </ul>
+                </div>
+            </div>
         </section>
     </main>
     <footer>
