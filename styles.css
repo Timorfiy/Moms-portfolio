@@ -1,3 +1,182 @@
+/**
+  Нормализация блочной модели
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/**
+   Убираем внутренние отступы слева тегам списков,
+   у которых есть атрибут class
+  */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+   Убираем внешние отступы body и двум другим тегам,
+   у которых есть атрибут class
+  */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+   Убираем внешние отступы вертикали нужным тегам,
+   у которых есть атрибут class
+  */
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+   Убираем стандартный маркер маркированному списку,
+   у которого есть атрибут class
+  */
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+/**
+   Обнуляем вертикальные внешние отступы параграфа,
+   объявляем локальную переменную для внешнего отступа вниз,
+   чтобы избежать взаимодействие с более сложным селектором
+  */
+p {
+  --paragraphMarginBottom: 24px;
+
+  margin-block: 0;
+}
+
+/**
+   Внешний отступ вниз для параграфа без атрибута class,
+   который расположен не последним среди своих соседних элементов
+  */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+   Упрощаем работу с изображениями
+  */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/**
+   Наследуем свойства шрифт для полей ввода
+  */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+  height: 100%;
+}
+
+/**
+   Плавный скролл
+  */
+html,
+:has(:target) {
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+  min-height: 100%;
+  /**
+     Унифицированный интерлиньяж
+    */
+  line-height: 1.5;
+}
+
+/**
+   Приводим к единому цвету svg-элементы
+  */
+svg *[fill] {
+  fill: currentColor;
+}
+svg *[stroke] {
+  stroke: currentColor;
+}
+
+/**
+   Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+  */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+   Удаляем все анимации и переходы для людей,
+   которые предпочитают их не использовать
+  */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@font-face {
+  font-family: 'Mulish';
+  src: url('/fonts/Mulish-Regular.woff2') format('woff2');
+  src: url('/fonts/Mulish-Regular.ttf') format('ttf');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mulish';
+  src: url('/fonts/Mulish-Bold.woff2') format('woff2');
+  src: url('/fonts/Mulish-ExtraBold.ttf') format('ttf');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.custom-font {
+  font-family: 'Mulish', monospace, sans-serif;
+}
+
+.bold {
+  font-weight: 700;
+}
+
 :root {
   --font-size-p: clamp(0.3rem, 3vw, 1.3rem);
   --font-size-li: clamp(0.4rem, 3.5vw, 1.6rem);
@@ -7,16 +186,11 @@
   --font-size-h3: clamp(0.5rem, 3.75vw, 1.5rem);
 }
 
-html {
-  scroll-behavior: smooth;
-  /* scroll-padding-top: 19.92px; */
-}
-
 body {
   margin: 0;
   padding: 0;
-  font-family: DejaVu Sans Mono, monospace;
-  background-color: #D6D6D6;
+  font-family: 'Mulish';
+  background-color: #d6d6d6;
 }
 
 p {
@@ -25,7 +199,7 @@ p {
   font-size: var(--font-size-p);
 }
 
-a{
+a {
   font-size: var(--font-size-h2-a);
 }
 
@@ -56,7 +230,7 @@ li {
 }
 
 section {
-  padding: 2vw 2vw 2vw 2vw ;
+  padding: 2vw 2vw 2vw 2vw;
 }
 
 .header {
@@ -134,18 +308,18 @@ section {
   grid-column: 5/13;
   width: 100%;
   height: 360px;
-  object-fit:fill;
+  object-fit: fill;
 }
 
 .about-me {
   display: grid;
   grid-template-columns: 3fr 5fr;
-  background-color: #ECECEC;
+  background-color: #ececec;
   color: black;
 }
 
 .dvuh {
-  font-size: 30px
+  font-size: 30px;
 }
 
 .about-me-div-img {
@@ -162,11 +336,11 @@ section {
   align-self: center;
 }
 
-.about-me-p p{
+.about-me-p p {
   padding: 1em;
 }
 
-.work-exp{
+.work-exp {
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
@@ -175,7 +349,7 @@ section {
 .skills {
   display: flex;
   flex-direction: column;
-  background-color: #ECECEC
+  background-color: #ececec;
 }
 
 .div-skills {
@@ -187,10 +361,9 @@ section {
 .column-skills {
   flex: 1;
   display: flex;
-  justify-content:flex-start;
-  flex-direction:column;
+  justify-content: flex-start;
+  flex-direction: column;
   align-items: center;
-
 }
 
 footer {
